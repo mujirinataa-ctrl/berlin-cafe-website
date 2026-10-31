@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f3eb">
+
+  <title>The Corner House | A Neighbourhood Café in Berlin</title>
+
+  <meta name="description"
+    content="Good coffee, slow mornings and freshly baked pastries. Discover The Corner House, a fictional neighbourhood café concept in Berlin.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #f7f3eb;
+      --paper: #fffdf8;
+      --burgundy: #713b43;
+      --burgundy-dark: #502b31;
+      --ink: #302d28;
+      --muted: #777168;
+      --olive: #777b60;
+      --line: #e6dfd3;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --radius: 8px;
+      --shadow: 0 14px 40px rgba(48, 45, 40, .08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    body, button, input, select, textarea {
+      font-family: var(--sans);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button, input, select, textarea {
+      font-size: 16px;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid var(--olive);
+      outline-offset: 3px;
+    }
+
+    .announcement {
+      padding: 9px 16px;
+      background: var(--burgundy-dark);
+      color: white;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .announcement span {
+      color: #e6c9a8;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 243, 235, .96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      max-width: 1240px;
+      min-height: 78px;
+      margin: auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--burgundy);
+      color: var(--burgundy);
+      display: grid;
+      place-items: center;
+      font-family: var(--serif);
+      font-size: 21px;
+    }
+
+    .brand-name {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: .4px;
+    }
+
+    .brand-subtitle {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .nav-links a:not(.button):hover {
+      color: var(--burgundy);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 47px;
+      padding: 13px 21px;
+      border: 1px solid var(--burgundy);
+      border-radius: 2px;
+      background: var(--burgundy);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background .2s, color .2s, transform .2s;
+    }
+
+    .button:hover {
+      background: var(--burgundy-dark);
+      transform: translateY(-1px);
+    }
+
+    .button-outline {
+      background: transparent;
+      color: var(--burgundy);
+    }
+
+    .button-outline:hover {
+      background: var(--burgundy);
+      color: white;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      font-size: 23px;
+    }
+
+    .hero {
+      max-width: 1440px;
+      margin: auto;
+      padding: 36px 28px 68px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.04fr;
+      min-height: 550px;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      padding: 30px 0 30px max(0px, calc((100vw - 1240px) / 2));
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--burgundy);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.3px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--burgundy);
+    }
+
+    h1, h2, h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      line-height: 1.12;
+    }
+
+    h1 {
+      max-width: 550px;
+      margin: 24px 0;
+      font-size: clamp(48px, 6vw, 78px);
+      letter-spacing: -2.5px;
+    }
+
+    h1 em {
+      color: var(--burgundy);
+      font-weight: 400;
+    }
+
+    .hero-description {
+      max-width: 410px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .hero-note strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .hero-note .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--olive);
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      min-height: 550px;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      border-radius: 3px;
+      object-position: center;
+    }
+
+    .image-label {
+      position: absolute;
+      left: -22px;
+      bottom: 34px;
+      max-width: 235px;
+      padding: 20px 22px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .image-label small {
+      display: block;
+      color: var(--burgundy);
+      font-size: 9px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .image-label strong {
+      display: block;
+      margin-top: 7px;
+      font-family: var(--serif);
+      font-size: 21px;
+      font-weight: 500;
+    }
+
+    .image-label span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .benefits {
+      background: var(--burgundy);
+      color: white;
+    }
+
+    .benefits-grid {
+      max-width: 1240px;
+      margin: auto;
+      padding: 27px 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .benefit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      text-align: left;
+    }
+
+    .benefit-icon {
+      font-size: 24px;
+    }
+
+    .benefit strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .benefit span:last-child {
+      display: block;
+      margin-top: 3px;
+      color: #e8d7d7;
+      font-size: 10px;
+    }
+
+    .section {
+      max-width: 1240px;
+      margin: auto;
+      padding: 100px 28px;
+    }
+
+    .section-heading {
+      max-width: 610px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-heading .eyebrow {
+      justify-content: center;
+    }
+
+    .section-heading h2 {
+      margin: 17px 0 15px;
+      font-size: clamp(36px, 4.3vw, 52px);
+      letter-spacing: -1px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .menu-section {
+      background: var(--paper);
+    }
+
+    .menu-section .section {
+      padding-top: 100px;
+    }
+
+    .menu-tools {
+      max-width: 780px;
+      margin: 0 auto 34px;
+    }
+
+    .search-wrap {
+      position: relative;
+      margin-bottom: 22px;
+    }
+
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      color: var(--muted);
+    }
+
+    .menu-search {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 15px 12px 43px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      background: white;
+      color: var(--ink);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .filter-btn {
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      transition: all .2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--burgundy);
+      background: var(--burgundy);
+      color: white;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .menu-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .menu-card img {
+      height: 220px;
+      background: var(--cream);
+    }
+
+    .menu-card-body {
+      padding: 21px;
+    }
+
+    .menu-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .menu-card h3 {
+      font-size: 22px;
+    }
+
+    .price {
+      color: var(--burgundy);
+      font-family: var(--serif);
+      font-size: 19px;
+      white-space: nowrap;
+    }
+
+    .menu-card p {
+      min-height: 45px;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 15px;
+    }
+
+    .tag {
+      padding: 5px 8px;
+      border: 1px solid var(--line);
+      color: var(--olive);
+      font-size: 9px;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+    }
+
+    .menu-note {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .no-results {
+      grid-column: 1 / -1;
+      padding: 35px 15px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .story-image {
+      height: 500px;
+      border-radius: 3px;
+    }
+
+    .story-copy h2 {
+      max-width: 470px;
+      margin: 20px 0;
+      font-size: clamp(38px, 4vw, 53px);
+    }
+
+    .story-copy > p {
+      max-width: 460px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .story-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 29px 0;
+    }
+
+    .story-detail {
+      padding-top: 15px;
+      border-top: 1px solid var(--line);
+    }
+
+    .story-detail strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .story-detail span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .booking-section {
+      background: #eee7dc;
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      align-items: start;
+      gap: 65px;
+    }
+
+    .booking-copy h2 {
+      margin: 18px 0;
+      font-size: clamp(38px, 4vw, 53px);
+    }
+
+    .booking-copy > p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .opening-hours {
+      margin-top: 30px;
+      padding-top: 21px;
+      border-top: 1px solid #d8cdbd;
+    }
+
+    .opening-hours h3 {
+      margin-bottom: 14px;
+      font-size: 20px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid #ded4c7;
+      font-size: 11px;
+    }
+
+    .hours-row span:last-child {
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .booking-form {
+      padding: 32px;
+      border: 1px solid #e3d9ca;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .booking-form h3 {
+      margin-bottom: 7px;
+      font-size: 27px;
+    }
+
+    .form-intro {
+      margin-bottom: 25px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 17px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field-full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 46px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      background: white;
+      color: var(--ink);
+    }
+
+    .field textarea {
+      min-height: 85px;
+      resize: vertical;
+    }
+
+    .booking-form .button {
+      width: 100%;
+      margin-top: 22px;
+    }
+
+    .form-message {
+      display: none;
+      margin-top: 17px;
+      padding: 13px;
+      background: #edf1e6;
+      color: #384b31;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .form-message.show {
+      display: block;
+    }
+
+    .demo-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.8;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .location-copy h2 {
+      margin: 18px 0;
+      font-size: clamp(37px, 4vw, 50px);
+    }
+
+    .location-copy > p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .address-card {
+      margin: 25px 0;
+      padding: 21px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .address-card strong {
+      display: block;
+      margin-bottom: 7px;
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .address-card p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .location-photo {
+      position: relative;
+      min-height: 390px;
+    }
+
+    .location-photo img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+    }
+
+    .location-caption {
+      position: absolute;
+      right: -15px;
+      bottom: 20px;
+      max-width: 220px;
+      padding: 17px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      font-family: var(--serif);
+      font-size: 17px;
+    }
+
+    footer {
+      padding: 55px 28px 22px;
+      background: var(--burgundy-dark);
+      color: white;
+    }
+
+    .footer-grid {
+      max-width: 1184px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 25px;
+    }
+
+    .footer-copy {
+      max-width: 300px;
+      margin-top: 12px;
+      color: #dfcaca;
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    .footer-heading {
+      margin-bottom: 14px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      color: #dfcaca;
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      max-width: 1184px;
+      margin: 35px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.2);
+      color: #dfcaca;
+      font-size: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .demo-badge {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 5px 8px;
+      border: 1px solid rgba(255,255,255,.35);
+      color: #f0ded2;
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+
+      .nav-links > a:not(.button) {
+        font-size: 11px;
+      }
+
+      .hero-grid {
+        gap: 25px;
+        min-height: 450px;
+      }
+
+      .hero-image-wrap {
+        min-height: 450px;
+      }
+
+      .hero-copy {
+        padding-left: 10px;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .story-grid,
+      .booking-grid {
+        gap: 35px;
+      }
+
+      .story-image {
+        height: 420px;
+      }
+
+      .booking-form {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      html {
+        scroll-padding-top: 75px;
+      }
+
+      .announcement {
+        font-size: 9px;
+        letter-spacing: 1.1px;
+      }
+
+      .nav {
+        min-height: 70px;
+        padding: 0 17px;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+      }
+
+      .brand-name {
+        font-size: 16px;
+      }
+
+      .menu-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 69px;
+        left: 0;
+        right: 0;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 20px 20px;
+        border-bottom: 1px solid var(--line);
+        background: var(--cream);
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .nav-links > a:not(.button) {
+        padding: 13px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 13px;
+      }
+
+      .nav-links .button {
+        margin-top: 13px;
+      }
+
+      .hero {
+        padding: 17px 17px 43px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .hero-copy {
+        padding: 27px 2px 0;
+      }
+
+      h1 {
+        max-width: 450px;
+        margin: 19px 0;
+        font-size: clamp(46px, 12vw, 65px);
+        letter-spacing: -1.8px;
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .hero-actions {
+        gap: 9px;
+      }
+
+      .hero-actions .button {
+        flex: 1;
+        padding: 13px 11px;
+        font-size: 10px;
+      }
+
+      .hero-note {
+        flex-wrap: wrap;
+        margin-top: 25px;
+      }
+
+      .hero-image-wrap {
+        min-height: 340px;
+      }
+
+      .image-label {
+        left: 10px;
+        bottom: 12px;
+        max-width: 205px;
+        padding: 15px;
+      }
+
+      .image-label strong {
+        font-size: 18px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 27px 20px;
+      }
+
+      .benefit {
+        justify-content: flex-start;
+      }
+
+      .section,
+      .menu-section .section {
+        padding: 69px 17px;
+      }
+
+      .section-heading {
+        margin-bottom: 30px;
+      }
+
+      .section-heading h2 {
+        font-size: 38px;
+      }
+
+      .menu-tools {
+        margin-bottom: 25px;
+      }
+
+      .filters {
+        justify-content: flex-start;
+      }
+
+      .filter-btn {
+        padding: 9px 12px;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+      }
+
+      .menu-card img {
+        height: 235px;
+      }
+
+      .menu-card-body {
+        padding: 18px;
+      }
+
+      .menu-card p {
+        min-height: 0;
+      }
+
+      .story-grid,
+      .booking-grid,
+      .location-grid {
+        grid-template-columns: 1fr;
+        gap: 31px;
+      }
+
+      .story-image {
+        height: 350px;
+      }
+
+      .story-copy h2,
+      .booking-copy h2,
+      .location-copy h2 {
+        font-size: 40px;
+      }
+
+      .story-details {
+        gap: 15px;
+      }
+
+      .booking-form {
+        padding: 21px 17px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .field-full {
+        grid-column: auto;
+      }
+
+      .location-photo {
+        min-height: 320px;
+      }
+
+      .location-caption {
+        right: 8px;
+        bottom: 10px;
+      }
+
+      footer {
+        padding: 43px 20px 20px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 20px;
+      }
+
+      .footer-grid > div:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 9px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    Your neighbourhood table awaits <span>·</span> Made with love in Berlin
+  </div>
+
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="The Corner House home">
+        <span class="brand-mark">CH</span>
+        <span>
+          <span class="brand-name">The Corner House</span>
+          <span class="brand-subtitle">Coffee · Kitchen · Neighbourhood</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Open navigation" aria-expanded="false"
+        aria-controls="navLinks">☰</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#menu">Our Menu</a>
+        <a href="#story">Our Story</a>
+        <a href="#visit">Find Us</a>
+        <a href="#booking" class="button">Book a Table ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-grid">
+
+        <div class="hero-copy">
+          <span class="eyebrow">A little corner of Berlin</span>
+
+          <h1>Good mornings.<br>Better <em>coffee.</em></h1>
+
+          <p class="hero-description">
+            A neighbourhood café for slow mornings, buttery pastries,
+            beautifully made coffee and conversations that last a little longer.
+            Come as you are. Stay a while.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#menu" class="button">Explore the menu ↓</a>
+            <a href="#visit" class="button button-outline">Come say hello</a>
+          </div>
+
+          <div class="hero-note">
+            <span class="dot"></span>
+            <strong>Good coffee, no rush.</strong>
+            <span>Every little detail matters.</span>
+          </div>
+        </div>
+
+        <div class="hero-image-wrap">
+          <img class="hero-image"
+            src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1100&q=85"
+            alt="Warm and welcoming neighbourhood café interior"
+            fetchpriority="high">
+
+          <div class="image-label">
+            <small>Your everyday escape</small>
+            <strong>A seat at our table.</strong>
+            <span>Freshly made. Thoughtfully served.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="What we care about">
+      <div class="benefits-grid">
+
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">☕</span>
+          <div>
+            <strong>Thoughtful coffee</strong>
+            <span>Good beans. Properly brewed.</span>
+          </div>
+        </div>
+
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">🥐</span>
+          <div>
+            <strong>Made fresh daily</strong>
+            <span>Little pleasures, every morning.</span>
+          </div>
+        </div>
+
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">♡</span>
+          <div>
+            <strong>Always welcoming</strong>
+            <span>Your neighbourhood, your table.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="section">
+
+        <div class="section-heading">
+          <span class="eyebrow">A few of our favourites</span>
+          <h2>Something good<br>is on the table.</h2>
+          <p>
+            From your first flat white to a leisurely weekend brunch,
+            there is always something worth staying for.
+          </p>
+        </div>
+
+        <div class="menu-tools">
+          <div class="search-wrap">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input class="menu-search" id="menuSearch" type="search"
+              placeholder="Find your favourite..." aria-label="Search menu">
+          </div>
+
+          <div class="filters" role="group" aria-label="Filter menu">
+            <button class="filter-btn active" data-category="all" aria-pressed="true">Everything</button>
+            <button class="filter-btn" data-category="coffee" aria-pressed="false">Coffee</button>
+            <button class="filter-btn" data-category="brunch" aria-pressed="false">Brunch</button>
+            <button class="filter-btn" data-category="bakery" aria-pressed="false">Bakery</button>
+            <button class="filter-btn" data-category="vegan" aria-pressed="false">Plant-based</button>
+          </div>
+        </div>
+
+        <div class="menu-grid" id="menuGrid" aria-live="polite">
+
+          <article class="menu-card" data-category="coffee" data-search="flat white espresso milk coffee">
+            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80"
+              alt="Freshly prepared flat white coffee" loading="lazy">
+
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Flat White</h3>
+                <span class="price">€3.80</span>
+              </div>
+              <p>Rich espresso, silky milk and a little moment to yourself.</p>
+              <div class="tags"><span class="tag">House favourite</span></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="coffee vegan" data-search="oat cappuccino coffee oat milk plant based">
+            <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=700&q=80"
+              alt="Cappuccino with delicate latte art" loading="lazy">
+
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Oat Cappuccino</h3>
+                <span class="price">€4.20</span>
+              </div>
+              <p>A smooth, comforting cappuccino with creamy oat milk.</p>
+              <div class="tags"><span class="tag">Plant-based</span></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="bakery" data-search="butter croissant pastry bakery breakfast">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80"
+              alt="Golden freshly baked croissants" loading="lazy">
+
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Butter Croissant</h3>
+                <span class="price">€3.20</span>
+              </div>
+              <p>Golden, flaky layers with a delicate, buttery centre.</p>
+              <div class="tags"><span class="tag">Baked fresh</span></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="brunch vegan" data-search="avocado toast sourdough brunch vegan breakfast">
+            <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=700&q=80"
+              alt="Fresh brunch served on toast" loading="lazy">
+
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Garden Toast</h3>
+                <span class="price">€11.50</span>
+              </div>
+              <p>Sourdough, smashed avocado, seasonal greens and lemon.</p>
+              <div class="tags">
+                <span class="tag">Vegan</span>
+                <span class="tag">Brunch</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="brunch" data-search="pancakes berries maple syrup brunch breakfast">
+            <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=700&q=80"
+              alt="Stack of pancakes with fruit" loading="lazy">
+
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Sunday Pancakes</h3>
+                <span class="price">€12.50</span>
+              </div>
+              <p>Fluffy pancakes, seasonal berries and maple syrup.</p>
+              <div class="tags"><span class="tag">Weekend favourite</span></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="bakery vegan" data-search="banana bread cake plant based vegan bakery">
+            <img src="https://images.unsplash.com/photo-1606101205459-5f9d5a3eac4c?auto=format&fit=crop&w=700&q=80"
+              alt="Homemade-style cake ready to serve" loading="lazy">
+
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Banana Bread</h3>
+                <span class="price">€4.50</span>
+              </div>
+              <p>Moist banana loaf, gently spiced and served with a smile.</p>
+              <div class="tags"><span class="tag">Plant-based</span></div>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="menu-note">
+          Sample menu for this portfolio concept. Prices and availability are illustrative.
+          Please ask our team about allergens.
+        </p>
+
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="story-grid">
+
+        <div>
+          <img class="story-image"
+            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=85"
+            alt="Cosy café interior with warm natural details"
+            loading="lazy">
+        </div>
+
+        <div class="story-copy">
+          <span class="eyebrow">A place to belong</span>
+
+          <h2>Small moments.<br>A little more meaning.</h2>
+
+          <p>
+            The Corner House is a café concept built around a simple idea:
+            everyday places should feel a little extraordinary. Inspired by
+            Berlin's creative neighbourhoods and the easy elegance of a
+            British coffee house, we make room for slow mornings, good food
+            and the people who make a place feel like home.
+          </p>
+
+          <div class="story-details">
+            <div class="story-detail">
+              <strong>Good things</strong>
+              <span>Thoughtfully chosen ingredients</span>
+            </div>
+
+            <div class="story-detail">
+              <strong>No rush</strong>
+              <span>A comfortable place to stay</span>
+            </div>
+          </div>
+
+          <a href="#booking" class="button">Save yourself a seat ↗</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="booking-section" id="booking">
+      <div class="section">
+        <div class="booking-grid">
+
+          <div class="booking-copy">
+            <span class="eyebrow">Make yourself at home</span>
+
+            <h2>Your table<br>is waiting.</h2>
+
+            <p>
+              Planning a catch-up, a slow breakfast or a little weekend treat?
+              Send us a table request and let us help you plan your visit.
+            </p>
+
+            <div class="opening-hours">
+              <h3>When we're around</h3>
+
+              <div class="hours-row">
+                <span>Monday – Friday</span>
+                <span>08:00 – 18:00</span>
+              </div>
+
+              <div class="hours-row">
+                <span>Saturday – Sunday</span>
+                <span>09:00 – 19:00</span>
+              </div>
+
+              <p class="demo-note">
+                These are sample opening hours for the demo website.
+              </p>
+            </div>
+          </div>
+
+          <form class="booking-form" id="bookingForm">
+            <h3>Request a table</h3>
+
+            <p class="form-intro">
+              Tell us a little about your visit. We will prepare your request
+              so you can send it by email.
+            </p>
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label for="guestName">YOUR NAME *</label>
+                <input id="guestName" name="name" type="text"
+                  placeholder="Your full name" autocomplete="name" required>
+              </div>
+
+              <div class="field">
+                <label for="guestEmail">YOUR EMAIL *</label>
+                <input id="guestEmail" name="email" type="email"
+                  placeholder="you@example.com" autocomplete="email" required>
+              </div>
+
+              <div class="field">
+                <label for="bookingDate">DATE *</label>
+                <input id="bookingDate" name="date" type="date" required>
+              </div>
+
+              <div class="field">
+                <label for="bookingTime">TIME *</label>
+                <select id="bookingTime" name="time" required>
+                  <option value="">Choose a time</option>
+                  <option>08:00</option>
+                  <option>09:00</option>
+                  <option>10:00</option>
+                  <option>11:00</option>
+                  <option>12:00</option>
+                  <option>13:00</option>
+                  <option>14:00</option>
+                  <option>15:00</option>
+                  <option>16:00</option>
+                  <option>17:00</option>
+                </select>
+              </div>
+
+              <div class="field field-full">
+                <label for="guestCount">NUMBER OF GUESTS *</label>
+                <select id="guestCount" name="guests" required>
+                  <option value="1">1 guest</option>
+                  <option value="2" selected>2 guests</option>
+                  <option value="3">3 guests</option>
+                  <option value="4">4 guests</option>
+                  <option value="5">5 guests</option>
+                  <option value="6">6 guests</option>
+                </select>
+              </div>
+
+              <div class="field field-full">
+                <label for="bookingNote">ANYTHING WE SHOULD KNOW? (OPTIONAL)</label>
+                <textarea id="bookingNote" name="note"
+                  placeholder="A special occasion, a preference..."></textarea>
+              </div>
+
+            </div>
+
+            <button type="submit" class="button">Prepare email request ↗</button>
+
+            <div class="form-message" id="formMessage" role="status"></div>
+
+            <p class="demo-note">
+              Demo only: no reservation is confirmed automatically.
+              The email address must be configured before this form is used
+              for a real café.
+            </p>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="visit">
+      <div class="location-grid">
+
+        <div class="location-copy">
+          <span class="eyebrow">Just around the corner</span>
+
+          <h2>Find your<br>new favourite.</h2>
+
+          <p>
+            Out for a wander, meeting a friend or simply following the smell
+            of good coffee? We'd love to welcome you.
+          </p>
+
+          <div class="address-card">
+            <strong>The Corner House</strong>
+            <p>
+              Berlin, Germany<br>
+              Example address for this demo project<br>
+              <span style="color: var(--burgundy);">
+                Actual business details to be added before launch.
+              </span>
+            </p>
+          </div>
+
+          <a class="button button-outline"
+            href="https://www.google.com/maps/search/?api=1&query=cafes+in+Berlin"
+            target="_blank" rel="noopener noreferrer">
+            Explore cafés in Berlin ↗
+          </a>
+        </div>
+
+        <div class="location-photo">
+          <img
+            src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1000&q=85"
+            alt="Coffee being prepared in a welcoming café"
+            loading="lazy">
+
+          <div class="location-caption">
+            A good cup can make an ordinary day.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-brand">The Corner House.</div>
+
+        <p class="footer-copy">
+          Good coffee, lovely people and a little corner to call your own.
+          Inspired by Berlin. Made for the everyday.
+        </p>
+
+        <span class="demo-badge">Independent café concept · Portfolio demo</span>
+      </div>
+
+      <div>
+        <div class="footer-heading">Explore</div>
+
+        <div class="footer-links">
+          <a href="#menu">Our Menu</a>
+          <a href="#story">Our Story</a>
+          <a href="#booking">Request a Table</a>
+          <a href="#visit">Find Us</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-heading">The little details</div>
+
+        <div class="footer-links">
+          <a href="#menu">Menu & Prices</a>
+          <a href="#visit">Opening Hours</a>
+          <a href="#booking">Table Requests</a>
+          <a href="#home">Back to the top ↑</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="currentYear"></span> The Corner House — Demo project.</span>
+      <span>Thoughtfully designed for good days.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
+      );
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    // Interactive menu: category filters and search
+    const menuCards = Array.from(
+      document.querySelectorAll(".menu-card")
+    );
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const menuSearch = document.getElementById("menuSearch");
+    const menuGrid = document.getElementById("menuGrid");
+
+    let activeCategory = "all";
+
+    function filterMenu() {
+      const query = menuSearch.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      menuCards.forEach(card => {
+        const categories = card.dataset.category.split(" ");
+        const searchableText = (
+          card.dataset.search + " " + card.innerText
+        ).toLowerCase();
+
+        const categoryMatches =
+          activeCategory === "all" ||
+          categories.includes(activeCategory);
+
+        const queryMatches = searchableText.includes(query);
+        const visible = categoryMatches && queryMatches;
+
+        card.hidden = !visible;
+
+        if (visible) visibleCount++;
+      });
+
+      const existingMessage = document.getElementById("noResults");
+
+      if (existingMessage) existingMessage.remove();
+
+      if (visibleCount === 0) {
+        const message = document.createElement("p");
+        message.id = "noResults";
+        message.className = "no-results";
+        message.textContent =
+          "Nothing on the menu matches your search. Try another word.";
+        menuGrid.appendChild(message);
+      }
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        activeCategory = button.dataset.category;
+
+        filterButtons.forEach(item => {
+          const isActive = item === button;
+          item.classList.toggle("active", isActive);
+          item.setAttribute("aria-pressed", String(isActive));
+        });
+
+        filterMenu();
+      });
+    });
+
+    menuSearch.addEventListener("input", filterMenu);
+
+    // Set the minimum reservation date to today, using local time.
+    const bookingDate = document.getElementById("bookingDate");
+    const today = new Date();
+
+    const localToday = [
+      today.getFullYear(),
+      String(today.getMonth() + 1).padStart(2, "0"),
+      String(today.getDate()).padStart(2, "0")
+    ].join("-");
+
+    bookingDate.min = localToday;
+
+    // Demo reservation request.
+    // Replace this placeholder with the café's real booking email
+    // before using the site for a real business.
+    const bookingEmail = "hello@cornerhouse.example";
+
+    const bookingForm = document.getElementById("bookingForm");
+    const formMessage = document.getElementById("formMessage");
+
+    bookingForm.addEventListener("submit", event => {
+      event.preventDefault();
+
+      if (!bookingForm.reportValidity()) return;
+
+      const formData = new FormData(bookingForm);
+
+      const name = formData.get("name").trim();
+      const email = formData.get("email").trim();
+      const date = formData.get("date");
+      const time = formData.get("time");
+      const guests = formData.get("guests");
+      const note = formData.get("note").trim();
+
+      if (date < localToday) {
+        formMessage.textContent =
+          "Please choose today or a future date.";
+        formMessage.classList.add("show");
+        return;
+      }
+
+      const subject = "Table request — The Corner House";
+
+      const body = [
+        "Hello The Corner House,",
+        "",
+        "I would like to request a table.",
+        "",
+        "Name: " + name,
+        "Email: " + email,
+        "Date: " + date,
+        "Time: " + time,
+        "Guests: " + guests,
+        "Additional notes: " + (note || "None"),
+        "",
+        "Please let me know whether this time is available.",
+        "",
+        "Thank you!"
+      ].join("\n");
+
+      const mailtoLink =
+        "mailto:" + bookingEmail +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+
+      formMessage.textContent =
+        "Your request is ready. This is a demo form: the placeholder email " +
+        bookingEmail +
+        " must be replaced with a real address before launch. No booking has been confirmed.";
+
+      formMessage.classList.add("show");
+
+      // Do not open a non-working placeholder email address.
+      if (!bookingEmail.endsWith(".example")) {
+        window.location.href = mailtoLink;
+      }
+    });
+
+    // Dynamic copyright year
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
